@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+{% extends 'rango/base.html' %}
 
-<!-- {% load static %} <!-- New Line -->
+{% block title %}{% endblock %}
 
-<html>
-	<head>
-		<title>Rango: Index</title>
-	</head>
-	
-	<body>
-		<h1>Rango says...</h1>
+	{% block body_block %}
+		
+		{% if user.is_authenticated %}
+		<h1>Rango says... hello {{ user.username }}!</h1>
+		{% else %}
+		<h1>Rango says... hello!</h1>
+		{% endif %}
 		
 		{% if categories %}
 			<ul>
@@ -20,10 +20,4 @@
 			<strong>There are no categories present.</strong>
 		{% endif %}
 		
-		<br />
-		<a href="./about/">About</a>
-		<br />
-		<!-- <img src="{% static "rango1.jpg" %}" alt="Picture of Rango" /> <!-- New Line -->
-	</body>
-	
-</html>
+	{% endblock %}
